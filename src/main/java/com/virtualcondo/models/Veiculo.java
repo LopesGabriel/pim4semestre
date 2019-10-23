@@ -15,7 +15,7 @@ public class Veiculo {
 	private String marca;
 	private String placa;
 	private String vagaEstacionamento;
-	@OneToOne(mappedBy = "veiculos")
+	@OneToOne(targetEntity = Morador.class)
 	private Morador dono;
 
 	public Veiculo() {}
