@@ -9,7 +9,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -21,7 +23,12 @@ public class Notificacao {
 	private Integer id;
 	private String assunto;
 	private String txtConteudo;
+
+	@OneToOne
+	@JoinColumn(name = "destinatario", referencedColumnName = "id")
 	private Morador destinatario;
+	@OneToOne
+	@JoinColumn(name = "remetente", referencedColumnName = "id")
 	private Morador remetente;
 	@Basic
 	@Temporal(TemporalType.TIMESTAMP)

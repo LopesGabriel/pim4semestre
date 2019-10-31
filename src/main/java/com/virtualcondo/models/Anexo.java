@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -22,7 +24,10 @@ public class Anexo {
 	@Basic
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dtUpload;
-	private Morador fornecedor;
+
+	@OneToOne
+	@JoinColumn(name = "morador", referencedColumnName = "id")
+	private Morador morador;
 	private String ext;
 
 	public Anexo() {}
@@ -59,12 +64,12 @@ public class Anexo {
 		this.dtUpload = dtUpload;
 	}
 
-	public Morador getFornecedor() {
-		return fornecedor;
+	public Morador getmorador() {
+		return morador;
 	}
 
-	public void setFornecedor(Morador fornecedor) {
-		this.fornecedor = fornecedor;
+	public void setmorador(Morador morador) {
+		this.morador = morador;
 	}
 
 	public String getExt() {

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -22,8 +24,13 @@ public class Documento {
 	@Basic
 	@Temporal(TemporalType.DATE)
 	private Date dtUpload;
-	private Morador responsavel;
-	private Apartamento apVinculado;
+	@OneToOne
+	@JoinColumn(name = "morador", referencedColumnName = "id")
+	private Morador morador;
+
+	@OneToOne
+	@JoinColumn(name = "apartamento", referencedColumnName = "id")
+	private Apartamento apartamento;
 
 	public Documento() {}
 
@@ -51,20 +58,20 @@ public class Documento {
 		this.nomeArquivo = nomeArquivo;
 	}
 
-	public Morador getResponsavel() {
-		return responsavel;
+	public Morador getmorador() {
+		return morador;
 	}
 
-	public void setResponsavel(Morador responsavel) {
-		this.responsavel = responsavel;
+	public void setmorador(Morador morador) {
+		this.morador = morador;
 	}
 
-	public Apartamento getApVinculado() {
-		return apVinculado;
+	public Apartamento getapartamento() {
+		return apartamento;
 	}
 
-	public void setApVinculado(Apartamento apVinculado) {
-		this.apVinculado = apVinculado;
+	public void setapartamento(Apartamento apartamento) {
+		this.apartamento = apartamento;
 	}
 
 	public Date getDtUpload() {

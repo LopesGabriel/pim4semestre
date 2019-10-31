@@ -18,6 +18,8 @@ public class Colaborador {
 	private double salario;
 	private String email;
 	private boolean situacao;
+	private String logradouro;
+	private String cep;
 
 	public Colaborador() {}
 
@@ -83,6 +85,22 @@ public class Colaborador {
 
 	public void setSituacao(boolean situacao) {
 		this.situacao = situacao;
+	}
+
+	public String getLogradouro() {
+		return logradouro;
+	}
+
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
 }

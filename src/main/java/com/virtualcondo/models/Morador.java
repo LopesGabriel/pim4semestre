@@ -30,7 +30,7 @@ public class Morador {
 	@Temporal(TemporalType.DATE)
 	private Calendar dtNascimento;
 
-	@OneToMany(targetEntity = Veiculo.class, mappedBy = "dono")
+	@OneToMany(targetEntity = Veiculo.class, mappedBy = "morador")
 	private List<Veiculo> veiculos;
 
 	public Morador() {}

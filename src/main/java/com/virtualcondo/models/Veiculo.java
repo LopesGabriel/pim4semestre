@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -14,19 +15,22 @@ public class Veiculo {
 	private Integer id;
 	private String marca;
 	private String placa;
-	private String vagaEstacionamento;
+	@OneToOne(targetEntity = VagaEstacionamento.class)
+	@JoinColumn(name = "vaga", referencedColumnName = "id")
+	private VagaEstacionamento vagaEstacionamento;
 	@OneToOne(targetEntity = Morador.class)
-	private Morador dono;
+	@JoinColumn(name = "morador", referencedColumnName = "id")
+	private Morador morador;
 
 	public Veiculo() {}
 
-	public Veiculo(Integer id, String marca, String placa, String vagaEstacionamento, Morador dono) {
+	public Veiculo(Integer id, String marca, String placa, VagaEstacionamento vagaEstacionamento, Morador morador) {
 		super();
 		this.id = id;
 		this.marca = marca;
 		this.placa = placa;
 		this.vagaEstacionamento = vagaEstacionamento;
-		this.dono = dono;
+		this.morador = morador;
 	}
 
 	public Integer getId() {
@@ -53,20 +57,20 @@ public class Veiculo {
 		this.placa = placa;
 	}
 
-	public String getVagaEstacionamento() {
+	public VagaEstacionamento getVagaEstacionamento() {
 		return vagaEstacionamento;
 	}
 
-	public void setVagaEstacionamento(String vagaEstacionamento) {
+	public void setVagaEstacionamento(VagaEstacionamento vagaEstacionamento) {
 		this.vagaEstacionamento = vagaEstacionamento;
 	}
 
-	public Morador getDono() {
-		return dono;
+	public Morador getmorador() {
+		return morador;
 	}
 
-	public void setDono(Morador dono) {
-		this.dono = dono;
+	public void setmorador(Morador morador) {
+		this.morador = morador;
 	}
 	
 }
