@@ -35,6 +35,14 @@ public class Morador {
 
 	public Morador() {}
 
+	/**
+	 * Construtor para Criar um morador somente informando o id
+	 * @param id
+	 */
+	public Morador(Integer id) {
+		this.id = id;
+	}
+
 	public Morador(Integer id, String nome, String cpf, String rg, String email, String telefone, String img,
 			Calendar dtNascimento) {
 		super();

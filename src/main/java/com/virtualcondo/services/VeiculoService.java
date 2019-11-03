@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.virtualcondo.models.Veiculo;
 import com.virtualcondo.repository.VeiculoRepository;
 
 import javassist.tools.rmi.ObjectNotFoundException;
 
+@Service
 public class VeiculoService {
 
 	@Autowired

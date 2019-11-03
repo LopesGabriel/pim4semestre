@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.virtualcondo.models.Morador;
+import com.virtualcondo.models.VagaEstacionamento;
 import com.virtualcondo.models.Veiculo;
+import com.virtualcondo.services.VagaEstacionamentoService;
 import com.virtualcondo.services.VeiculoService;
 
 import javassist.tools.rmi.ObjectNotFoundException;
@@ -23,6 +26,9 @@ public class VeiculoResource {
 
 	@Autowired
 	private VeiculoService service;
+
+	@Autowired
+	private VagaEstacionamentoService vagaService;
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id){
@@ -45,6 +51,18 @@ public class VeiculoResource {
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	public ResponseEntity<?> salvar(@RequestBody Veiculo veiculo){
 		veiculo = service.salvar(veiculo);
+
+		try{
+
+			VagaEstacionamento vaga = vagaService.buscar(veiculo.getVagaEstacionamento().getId());
+			vaga.setUsuario(new Morador(veiculo.getmorador().getId()));
+			vaga.setEmUso(true);
+			vaga = vagaService.editar(vaga);
+
+		}catch(ObjectNotFoundException e) {
+			e.printStackTrace();
+		}
+
 		return ResponseEntity.ok().body(veiculo);
 	}
 

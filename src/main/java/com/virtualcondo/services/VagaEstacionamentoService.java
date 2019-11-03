@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.virtualcondo.models.VagaEstacionamento;
 import com.virtualcondo.repository.VagaEstacionamentoRepository;
 
 import javassist.tools.rmi.ObjectNotFoundException;
 
+@Service
 public class VagaEstacionamentoService {
 
 	@Autowired
@@ -21,10 +23,9 @@ public class VagaEstacionamentoService {
 				"Objeto não encontrado! Id: " + id + ", tipo: " + VagaEstacionamento.class.getName()) );
 	}
 
-	/*
-	 * public List<VagaEstacionamento> listarDisponiveis(){ String hql =
-	 * "from VagaEstacionamento r where r.emUso = 0"; return null; }
-	 */
+	public List<VagaEstacionamento> listarDisponivel(){
+		return new JDBCVagaEstacionamentoService().listarDisponiveis();
+	}
 
 	public List<VagaEstacionamento> listarTodos(){
 		List<VagaEstacionamento> lista = repo.findAll();
