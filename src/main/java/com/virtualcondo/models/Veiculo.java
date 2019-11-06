@@ -1,17 +1,13 @@
 package com.virtualcondo.models;
 
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Veiculo {
@@ -26,20 +22,18 @@ public class Veiculo {
 	@JoinColumn(name = "vaga", referencedColumnName = "id")
 	private VagaEstacionamento vagaEstacionamento;
 
-	@JsonBackReference
-	@ManyToMany
-	@JoinTable(name = "veiculos_morador", joinColumns = {@JoinColumn(name="veiculo_id")}, inverseJoinColumns = {@JoinColumn(name="morador_id")})
-	private List<Morador> moradores;
+	@OneToOne
+	private Morador morador;
 	
 	public Veiculo() {}
 
-	public Veiculo(Integer id, String marca, String placa, VagaEstacionamento vagaEstacionamento, List<Morador> moradores) {
+	public Veiculo(Integer id, String marca, String placa, VagaEstacionamento vagaEstacionamento, Morador morador) {
 		super();
 		this.id = id;
 		this.marca = marca;
 		this.placa = placa;
 		this.vagaEstacionamento = vagaEstacionamento;
-		this.moradores = moradores;
+		this.morador = morador;
 	}
 
 	public Integer getId() {
@@ -74,12 +68,12 @@ public class Veiculo {
 		this.vagaEstacionamento = vagaEstacionamento;
 	}
 
-	public List<Morador> getmorador() {
-		return moradores;
+	public Morador getmorador() {
+		return morador;
 	}
 
-	public void setmorador(List<Morador> moradores) {
-		this.moradores = moradores;
+	public void setmorador(Morador morador) {
+		this.morador = morador;
 	}
 	
 }
