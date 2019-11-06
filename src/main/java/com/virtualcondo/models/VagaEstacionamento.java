@@ -4,8 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
 @Entity
 public class VagaEstacionamento {
@@ -14,22 +12,15 @@ public class VagaEstacionamento {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String vaga;
-	@OneToOne(targetEntity = Veiculo.class)
-	@JoinColumn(name = "veiculo", referencedColumnName = "id")
-	private Veiculo veiculo;
 	private boolean emUso;
-	@OneToOne(targetEntity = Morador.class)
-	@JoinColumn(name = "dono", referencedColumnName = "id")
-	private Morador morador;
 
 	public VagaEstacionamento() {}
 
-	public VagaEstacionamento(Integer id, String vaga, boolean emUso, Morador morador) {
+	public VagaEstacionamento(Integer id, String vaga, boolean emUso) {
 		super();
 		this.id = id;
 		this.vaga = vaga;
 		this.emUso = emUso;
-		this.morador = morador;
 	}
 
 	public Integer getId() {
@@ -55,15 +46,5 @@ public class VagaEstacionamento {
 	public void setEmUso(boolean emUso) {
 		this.emUso = emUso;
 	}
-
-	public Morador getUsuario() {
-		return morador;
-	}
-
-	public void setUsuario(Morador morador) {
-		this.morador = morador;
-	}
-
-	
 
 }

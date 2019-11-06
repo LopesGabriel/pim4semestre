@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.virtualcondo.models.Morador;
 import com.virtualcondo.models.VagaEstacionamento;
 import com.virtualcondo.models.Veiculo;
 import com.virtualcondo.services.VagaEstacionamentoService;
@@ -53,9 +52,7 @@ public class VeiculoResource {
 		veiculo = service.salvar(veiculo);
 
 		try{
-
 			VagaEstacionamento vaga = vagaService.buscar(veiculo.getVagaEstacionamento().getId());
-			vaga.setUsuario(new Morador(veiculo.getmorador().getId()));
 			vaga.setEmUso(true);
 			vaga = vagaService.editar(vaga);
 

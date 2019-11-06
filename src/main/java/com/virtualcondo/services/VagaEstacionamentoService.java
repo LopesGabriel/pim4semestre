@@ -47,7 +47,6 @@ public class VagaEstacionamentoService {
 		vaga.setEmUso(false);
 		vaga.setId(ve.getId());
 		vaga.setVaga(ve.getVaga());
-		vaga.setUsuario(null);
 
 		repo.deleteById(ve.getId());
 		vaga = repo.save(vaga);

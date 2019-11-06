@@ -28,10 +28,6 @@ public class Documento {
 	@JoinColumn(name = "morador", referencedColumnName = "id")
 	private Morador morador;
 
-	@OneToOne
-	@JoinColumn(name = "apartamento", referencedColumnName = "id")
-	private Apartamento apartamento;
-
 	public Documento() {}
 
 	public Integer getId() {
@@ -64,14 +60,6 @@ public class Documento {
 
 	public void setmorador(Morador morador) {
 		this.morador = morador;
-	}
-
-	public Apartamento getapartamento() {
-		return apartamento;
-	}
-
-	public void setapartamento(Apartamento apartamento) {
-		this.apartamento = apartamento;
 	}
 
 	public Date getDtUpload() {

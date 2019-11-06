@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.virtualcondo.connection.FabricaDeConexao;
-import com.virtualcondo.models.Morador;
 import com.virtualcondo.models.VagaEstacionamento;
 
 public class JDBCVagaEstacionamentoService {
@@ -29,8 +28,7 @@ public class JDBCVagaEstacionamentoService {
 				lista.add(new VagaEstacionamento(
 						rs.getInt("id"),
 						rs.getString("vaga"),
-						rs.getBoolean("emuso"),
-						new Morador(rs.getInt("dono"))
+						rs.getBoolean("emuso")
 					));
 			}
 

@@ -1,7 +1,6 @@
 package com.virtualcondo.models;
 
 import java.util.Calendar;
-import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -9,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -24,14 +22,13 @@ public class Morador {
 	private String rg;
 	private String email;
 	private String telefone;
+
 	@Column(columnDefinition = "LONGTEXT")
 	private String img;
+
 	@Basic
 	@Temporal(TemporalType.DATE)
 	private Calendar dtNascimento;
-
-	@OneToMany(targetEntity = Veiculo.class, mappedBy = "morador")
-	private List<Veiculo> veiculos;
 
 	public Morador() {}
 
@@ -118,14 +115,6 @@ public class Morador {
 
 	public void setDtNascimento(Calendar dtNascimento) {
 		this.dtNascimento = dtNascimento;
-	}
-
-	public List<Veiculo> getVeiculos() {
-		return veiculos;
-	}
-
-	public void setVeiculos(List<Veiculo> veiculos) {
-		this.veiculos = veiculos;
 	}
 
 }
