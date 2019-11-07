@@ -24,3 +24,23 @@
  - /vagas/id (Get) -> Recupera uma vaga
  - /vagas (Get) -> Lista todas as vagas
  - /vagas/disponiveis (Get) -> Lista disponíveis
+
+ ## Visitantes
+ - /visitantes/id (Get) -> Retorna o visitante
+ - /visitantes (Get) -> Lista com todos os visitantes
+ - /visitantes (Post) -> Salvar o visitante
+    - Parâmetros (nome, cpf, rg, dtEntrada, dtSaida(Nullable),)
+ - /visitantes (Put) -> Editar o visitante
+ - /visitantes (Delete) -> Deleta o visitante
+
+Exemplo JSON
+ ```javascript
+{
+    "id": null,
+    "nome": "Nome Aqui",
+    "cpf": "123.456.789-01",
+    "rg": "RG aqui",
+    "dtEntrada": "2019-11-07T16:31.000",
+    "dtSaida": null
+}
+ ```
